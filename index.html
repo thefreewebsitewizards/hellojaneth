@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Hidalgoteran - Marriage & Family Therapist Associate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --primary: #e8dfd5;
+            --secondary: #f9f5f0;
+            --accent: #8ba888;
+            --text: #555555;
+            --dark: #333333;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+        }
+        
+        /* Enhanced Section Animations */
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Staggered Animation for Multiple Elements */
+        .section:nth-child(1) { transition-delay: 0.1s; }
+        .section:nth-child(2) { transition-delay: 0.2s; }
+        .section:nth-child(3) { transition-delay: 0.3s; }
+        .section:nth-child(4) { transition-delay: 0.4s; }
+        .section:nth-child(5) { transition-delay: 0.5s; }
+        
+        /* Navigation Enhancements */
+        nav {
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Menu Animations */
+        #mobile-menu {
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        #mobile-menu:not(.hidden) {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-nav-link {
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        #mobile-menu:not(.hidden) .mobile-nav-link {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav-link:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-nav-link:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-nav-link:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-nav-link:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav-link:nth-child(6) { transition-delay: 0.35s; }
+        
+        /* Button Hover Effects */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 168, 136, 0.3);
+        }
+        
+        /* Card Hover Effects */
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .specialty-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-8px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(139, 168, 136, 0.2);
+            background: linear-gradient(135deg, #f9f5f0 0%, #e8dfd5 100%);
+        }
+        
+        .specialty-card i {
+            transition: all 0.3s ease;
+        }
+        
+        .specialty-card:hover i {
+            transform: scale(1.2) rotate(10deg);
+            color: #7a9f7a;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8F4F4 100%);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #7a9f7a);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .testimonial-card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(139, 168, 136, 0.15);
+        }
+        
+        /* Image Hover Effects */
+        .image-hover {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .image-hover img {
+            transition: all 0.3s ease;
+        }
+        
+        .image-hover:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Headshot Animation */
+        .headshot-container {
+            transition: all 0.3s ease;
+        }
+        
+        .headshot-container:hover {
+            transform: scale(1.05);
+        }
+        
+        .headshot-container img {
+            transition: all 0.3s ease;
+        }
+        
+        .headshot-container:hover img {
+            box-shadow: 0 15px 30px rgba(139, 168, 136, 0.3);
+        }
+        
+        /* Practice Card Enhancements */
+        .practice-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: floatCard 4s ease-in-out infinite;
+            transform: rotate(-1deg);
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-15px) scale(1.05) rotate(1deg);
+            box-shadow: 0 25px 50px rgba(139, 168, 136, 0.25);
+            animation-play-state: paused;
+        }
+        
+        /* Floating animation for the practice card */
+        @keyframes floatCard {
+            0% { 
+                transform: translateY(0px) rotate(-1deg);
+                box-shadow: 0 10px 20px rgba(139, 168, 136, 0.1);
+            }
+            50% { 
+                transform: translateY(-8px) rotate(0.5deg);
+                box-shadow: 0 15px 30px rgba(139, 168, 136, 0.15);
+            }
+            100% { 
+                transform: translateY(0px) rotate(-1deg);
+                box-shadow: 0 10px 20px rgba(139, 168, 136, 0.1);
+            }
+        }
+        
+        /* Enhanced card elements animation */
+        .practice-card h3 {
+            transition: all 0.3s ease;
+        }
+        
+        .practice-card:hover h3 {
+            transform: translateY(-2px);
+            color: #7a9f7a;
+        }
+        
+        .practice-card .service-item {
+            transition: all 0.3s ease;
+        }
+        
+        .practice-card:hover .service-item {
+            transform: translateX(5px);
+        }
+        
+        .practice-card button {
+            transition: all 0.3s ease;
+        }
+        
+        .practice-card:hover button {
+            transform: translateY(-2px);
+        }
+        
+        /* Social Media Cards */
+        .social-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 168, 136, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .social-card:hover:before {
+            left: 100%;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(139, 168, 136, 0.2);
+        }
+        
+        .social-card i {
+            transition: all 0.3s ease;
+        }
+        
+        .social-card:hover i {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        /* Floating Contact Button */
+        .floating-contact {
+            animation: float 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-contact:hover {
+            animation-play-state: paused;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 168, 136, 0.4);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Pulse Animation for Important Elements */
+        .pulse-on-hover:hover {
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Fade In Animation for Page Load */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .section {
+                transform: translateY(30px);
+            }
+            
+            .card-hover:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+            
+            .specialty-card:hover {
+                transform: translateY(-4px);
+            }
+            
+            .social-card:hover {
+                transform: translateY(-4px) scale(1.02);
+            }
+            
+            .practice-card {
+                animation: floatCardMobile 3s ease-in-out infinite;
+            }
+            
+            .practice-card:hover {
+                transform: translateY(-8px) scale(1.02) rotate(0.5deg);
+            }
+            
+            @keyframes floatCardMobile {
+                0% { 
+                    transform: translateY(0px) rotate(-0.5deg);
+                }
+                50% { 
+                    transform: translateY(-4px) rotate(0.25deg);
+                }
+                100% { 
+                    transform: translateY(0px) rotate(-0.5deg);
+                }
+            }
+        }
+        
+        /* Smooth transitions for all interactive elements */
+        * {
+            transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 shadow-sm z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-gray-800" style="font-family: 'Playfair Display', serif;">Jay Hidalgoteran</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-[#8ba888] transition">About</a>
+                    <a href="#expertise" class="nav-link text-gray-700 hover:text-[#8ba888] transition">Expertise</a>
+                    <a href="#approach" class="nav-link text-gray-700 hover:text-[#8ba888] transition">Treatment</a>
+                    <a href="#location" class="nav-link text-gray-700 hover:text-[#8ba888] transition">Location</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-[#8ba888] transition">Reviews</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-[#8ba888] transition">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <svg id="hamburger-icon" class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 text-gray-700 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2 border-b border-gray-100">About</a>
+                    <a href="#expertise" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2 border-b border-gray-100">Expertise</a>
+                    <a href="#approach" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2 border-b border-gray-100">Treatment</a>
+                    <a href="#location" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2 border-b border-gray-100">Location</a>
+                    <a href="#testimonials" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2 border-b border-gray-100">Reviews</a>
+                    <a href="#contact" class="mobile-nav-link text-gray-700 hover:text-[#8ba888] transition py-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-32 pb-20 px-6">
+        <div class="container mx-auto flex flex-col md:flex-row ">
+            <div class="md:w-1/2 mb-12 md:mb-0 section">
+                <!-- Professional Headshot - Moved to top -->
+                <div class="flex  mb-8">
+                    <div class="relative">
+                        <img src="/Images/hero.jpg" 
+                             alt="Jay Hidalgoteran - Professional Headshot" 
+                             class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg">
+                        <!-- Subtle ring accent -->
+                        <div class="absolute inset-0 rounded-full border-4 border-[#8ba888] opacity-20"></div>
+                    </div>
+                </div>
+                
+                <!-- Text content below headshot -->
+                <div class="">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Jay Hidalgoteran</h1>
+                    <p class="text-xl mb-6">Marriage & Family Therapist Associate, AMFT (she, her)</p>
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-[#e8dfd5] text-[#555555] mb-8">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        <span>Verified by Psychology Today</span>
+                    </div>
+                    <p class="text-lg mb-8">Providing compassionate therapy for individuals and families in Riverside, CA and online.</p>
+                    <a href="#contact" class="px-8 py-3 bg-[#8ba888] text-white rounded-full hover:bg-[#7a9f7a] transition">Contact Me</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 section">
+                <div class="max-w-md mx-auto">
+                    <!-- Practice Card - Enhanced with floating, rotation and hover grow -->
+                    <div class="practice-card bg-white rounded-xl shadow-lg p-6 border border-[#e8dfd5]">
+                        <h3 class="text-2xl font-bold text-[#333333] mb-6" style="font-family: 'Playfair Display', serif;">My Practice at a Glance</h3>
+                        
+                        <!-- Service Type -->
+                        <div class="service-item flex items-center mb-4 p-3 bg-[#f9f5f0] rounded-lg">
+                            <div class="flex items-center text-[#8ba888] mr-3">
+                                <i class="fas fa-video mr-2"></i>
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <span class="text-[#555555] font-medium">Available both in-person and online</span>
+                        </div>
+                        
+                        <!-- Location -->
+                        <div class="service-item mb-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-[#8ba888] mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-semibold text-[#333333]">Clear View Behavioral Services</p>
+                                    <p class="text-[#555555]">6700 Indiana Ave, STE 175</p>
+                                    <p class="text-[#555555]">Riverside, CA 92506 <a href="#location" class="text-[#8ba888] hover:underline">map</a></p>
+                                    <p class="text-[#555555]">(909) 757-0915</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div class="grid grid-cols-3 gap-2 mb-4">
+                            <button class="px-3 py-2 bg-[#e8dfd5] text-[#555555] rounded-lg text-sm font-medium hover:bg-[#8ba888] hover:text-white transition">Email me</button>
+                            <button class="px-3 py-2 bg-[#e8dfd5] text-[#555555] rounded-lg text-sm font-medium hover:bg-[#8ba888] hover:text-white transition">My website</button>
+                            <button class="px-3 py-2 bg-[#e8dfd5] text-[#555555] rounded-lg text-sm font-medium hover:bg-[#8ba888] hover:text-white transition">Share</button>
+                        </div>
+                        
+                        <!-- Quote -->
+                        <div class="service-item bg-[#f9f5f0] p-4 rounded-lg mb-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-quote-left text-[#8ba888] mr-3 mt-1"></i>
+                                <p class="text-[#555555] italic">Hi, I am so happy you found me. I offer Telehealth and In-Person services. I am open Tuesdays and Thursdays 1-6pm unless planned otherwise.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Rate and Specialization -->
+                        <div class="space-y-3">
+                            <div class="service-item flex items-center">
+                                <i class="fas fa-dollar-sign text-[#8ba888] mr-3"></i>
+                                <span class="text-[#555555]">$120 Per Session <i class="fas fa-chevron-right text-[#8ba888] ml-2"></i></span>
+                            </div>
+                            <div class="service-item flex items-center">
+                                <i class="fas fa-users text-[#8ba888] mr-3"></i>
+                                <span class="text-[#555555]">I see individuals and families <i class="fas fa-chevron-right text-[#8ba888] ml-2"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 md:pr-8 section">
+                    <img src="/Images/About.jpeg" 
+                         alt="Jay Hidalgoteran" 
+                         class="rounded-lg shadow-md w-full h-auto object-cover">
+                </div>
+                <div class="md:w-2/3 section">
+                    <p class="text-lg mb-6">My name is Janeth, but I go by Jay. I am a bilingual (Spanish and English) associate marriage and family therapist. I am passionate about helping individuals cope with life challenges and work collaboratively towards their self-defined goals.</p>
+                    <p class="text-lg mb-6">I prioritize building a deep therapeutic relationship with my clients. My therapeutic approach is multi-faceted and unique to each individual. I provide a safe space for individuals to be able to work on their challenges with no judgement, compassion, creativity and collaboration.</p>
+                    <p class="text-lg">I'm grateful you're here and reaching out for support. This is the first step towards growth and well-being.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifications Section -->
+    <section id="qualifications" class="py-20 px-6 bg-[#f9f5f0]">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">My Qualifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Verified Professional</h3>
+                    <p>Verified by Psychology Today</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">License</h3>
+                    <p>Prelicense by State of California / #154732</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Supervision</h3>
+                    <p>Supervised by Eric Trauth (California / #96604)</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Education</h3>
+                    <p>Pepperdine University, Masters (Graduated 2024)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="expertise" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Specialties & Expertise</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="font-medium">ADHD & Autism</h3>
+                </div>
+            
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-medium">Behavioral Issues</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="font-medium">Career Counseling</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="font-medium">Caregivers</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h3 class="font-medium">Life Coaching</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="font-medium">Life Transitions</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="font-medium">Parenting</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="font-medium">Peer Relationships</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3 class="font-medium">Pregnancy/Postpartum</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="font-medium">Relationship Issues</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-medium">School Issues</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="font-medium">Self Esteem</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-pray"></i>
+                    </div>
+                    <h3 class="font-medium">Spirituality</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="font-medium">Stress</h3>
+                </div>
+                
+                <div class="specialty-card bg-[#f9f5f0] p-4 rounded-lg transition duration-300 section">
+                    <div class="text-[#8ba888] mb-2">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3 class="font-medium">Women's Issues</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Focus Section -->
+    <section id="clients" class="py-20 px-6 bg-[#f9f5f0]">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Client Focus</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Age</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-child mr-2" style="color: #8ba888;"></i>
+                            <span>Toddlers</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-child mr-2" style="color: #8ba888;"></i>
+                            <span>Children (6–10)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-child mr-2" style="color: #8ba888;"></i>
+                            <span>Preteens</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user mr-2" style="color: #8ba888;"></i>
+                            <span>Teens</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-user mr-2" style="color: #8ba888;"></i>
+                            <span>Adults</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Participants</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-user text-[#8ba888] mr-2"></i>
+                            <span>Individuals</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-home text-[#8ba888] mr-2"></i>
+                            <span>Families</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-3xl mb-4">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Ethnicity & Language</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-heart text-[#8ba888] mr-2"></i>
+                            <span>Focus: Hispanic and Latino</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-language text-[#8ba888] mr-2"></i>
+                            <span>Also speaks: Spanish</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-church text-[#8ba888] mr-2"></i>
+                            <span>Religion: Christian</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Approach Section -->
+    <section id="approach" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Treatment Approach</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-chart-bar text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">ABA</h3>
+                    </div>
+                    <p>Applied Behavior Analysis focuses on improving specific behaviors through reinforcement strategies.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-brain text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">CBT</h3>
+                    </div>
+                    <p>Cognitive Behavioral Therapy helps identify and change negative thought patterns and behaviors.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-comments text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">CPT</h3>
+                    </div>
+                    <p>Cognitive Processing Therapy is effective for treating PTSD by challenging unhelpful beliefs.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-sitemap text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Family Systems</h3>
+                    </div>
+                    <p>Views problems as patterns or systems that need adjusting rather than residing in an individual.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-spa text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Mindfulness-Based (MBCT)</h3>
+                    </div>
+                    <p>Combines cognitive therapy with meditative practices and mindfulness techniques.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-bullseye text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Motivational Interviewing</h3>
+                    </div>
+                    <p>Helps clients find the motivation to make positive behavioral changes.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-user text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Person-Centered</h3>
+                    </div>
+                    <p>Emphasizes unconditional positive regard and support to help clients make changes.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-couch text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Psychoanalytic</h3>
+                    </div>
+                    <p>Explores unconscious patterns of thought and behavior that developed from childhood.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-lightbulb text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Solution-Focused Brief Therapy (SFBT)</h3>
+                    </div>
+                    <p>Focuses on solutions rather than problems, emphasizing clients' strengths.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-dumbbell text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Strength-Based</h3>
+                    </div>
+                    <p>Focuses on the individual's strengths and resilience rather than weaknesses.</p>
+                </div>
+                
+                <div class="bg-[#f9f5f0] p-6 rounded-lg section">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-[#e8dfd5] p-2 rounded-full mr-4">
+                            <i class="fas fa-home text-[#8ba888]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Structural Family Therapy</h3>
+                    </div>
+                    <p>Examines and addresses patterns of interaction within families to create healthier dynamics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rates Section -->
+    <section id="rates" class="py-20 px-6 bg-[#f9f5f0]">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">My Rates</h2>
+            <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-4xl mb-4">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Fees</h3>
+                    <ul class="space-y-4">
+                        <li class="flex justify-between items-center pb-2 border-b border-gray-100">
+                            <span>Individual Sessions</span>
+                            <span class="font-bold">$120</span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span>Sliding Scale</span>
+                            <span class="font-medium" style="color: #8ba888;">Available upon request</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md section">
+                    <div class="text-[#8ba888] text-4xl mb-4">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Payment Methods</h3>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <div class="p-3 bg-[#e8dfd5] rounded-lg">
+                            <i class="fab fa-cc-amex text-2xl text-blue-600"></i>
+                        </div>
+                        <div class="p-3 bg-[#e8dfd5] rounded-lg">
+                            <i class="fab fa-cc-discover text-2xl text-orange-500"></i>
+                        </div>
+                        <div class="p-3 bg-[#e8dfd5] rounded-lg">
+                            <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
+                        </div>
+                        <div class="p-3 bg-[#e8dfd5] rounded-lg">
+                            <i class="fab fa-cc-visa text-2xl text-blue-800"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Location</h2>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2 section">
+                    <div class="overflow-hidden rounded-lg shadow-lg h-full">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.115384351543!2d-117.3388229241381!3d33.9809820731509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcb1f6767a5a5f%3A0x9a4a3a7637a7a7a7!2s6700%20Indiana%20Ave%20%23175%2C%20Riverside%2C%20CA%2092506%2C%20USA!5e0!3m2!1sen!2s!4v1687892345678!5m2!1sen!2s" 
+                                width="100%" 
+                                height="400" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 section">
+                    <div class="bg-[#f9f5f0] p-8 rounded-lg h-full">
+                        <h3 class="text-2xl font-semibold mb-6">Clear View Behavioral Services</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-xl mt-1 mr-4" style="color: #8ba888;">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Address</p>
+                                    <p>6700 Indiana Ave, STE 175<br>Riverside, CA 92506</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-xl mt-1 mr-4" style="color: #8ba888;">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Phone</p>
+                                    <p>(909) 757-0915</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-xl mt-1 mr-4" style="color: #8ba888;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Hours</p>
+                                    <p>M–F 9AM–5PM or by appointment</p>
+                                </div>
+                            </div>
+                            
+                            <div class="pt-6">
+                                <a href="tel:9097570915" class="inline-block px-6 py-3 bg-[#8ba888] text-white rounded-full transition mr-4">
+                                    <i class="fas fa-phone mr-2"></i> Call Now
+                                </a>
+                                <a href="#contact" class="inline-block px-6 py-3 border border-[#8ba888] text-[#8ba888] rounded-full hover:bg-[#f9f5f0] transition">
+                                    <i class="fas fa-envelope mr-2"></i> Email Me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-6 bg-[#f9f5f0]">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Client Testimonials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-8 rounded-lg section">
+                    <div class="text-yellow-400 text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg italic mb-6">"Jay is incredibly compassionate and insightful. She has helped me navigate through some of the most challenging times in my life with grace and understanding."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3" style="background-color: #e8dfd5; color: #8ba888;">
+                            <span>ML</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">— M.L.</p>
+                            <p class="text-sm text-gray-500">Client since 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-lg section">
+                    <div class="text-yellow-400 text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg italic mb-6">"Her guidance changed how I manage my stress and relationships. I've learned tools that I use every day to create healthier boundaries and self-care practices."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3" style="background-color: #e8dfd5; color: #8ba888;">
+                            <span>SR</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">— S.R.</p>
+                            <p class="text-sm text-gray-500">Client since 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-8 rounded-lg section">
+                    <div class="text-yellow-400 text-2xl mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-lg italic mb-6">"As a Spanish speaker, it's been invaluable to have therapy in my native language. Jay understands my cultural background and has helped my whole family communicate better."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3" style="background-color: #e8dfd5; color: #8ba888;">
+                            <span>FG</span>
+                        </div>
+                        <div>
+                            <p class="font-medium">— F.G.</p>
+                            <p class="text-sm text-gray-500">Family therapy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials/Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Connect With Me</h2>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Instagram Card -->
+                <div class="p-6 rounded-lg shadow-sm section hover:shadow-md transition-shadow" style="background-color: #f9f5f0;">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4" style="color: #8ba888;">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Instagram</h3>
+                        <p class="text-sm text-gray-500">@hellojaneth</p>
+                        <a href="https://www.instagram.com/hellojaneth?utm_source=ig_web_button_share_sheet" target="_blank" class="inline-block px-4 py-2 text-white rounded-lg transition" style="background-color: #8ba888;" onmouseover="this.style.backgroundColor='#7a9f7a'" onmouseout="this.style.backgroundColor='#8ba888'">
+                            Follow Me
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- TikTok Card -->
+                <div class="p-6 rounded-lg shadow-sm section hover:shadow-md transition-shadow" style="background-color: #f9f5f0;">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4" style="color: #8ba888;">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">TikTok</h3>
+                        <p class="text-sm text-gray-500">@nothellojaneth</p>
+                        <a href="https://www.tiktok.com/@nothellojaneth" target="_blank" class="inline-block px-4 py-2 text-white rounded-lg transition" style="background-color: #8ba888;" onmouseover="this.style.backgroundColor='#7a9f7a'" onmouseout="this.style.backgroundColor='#8ba888'">
+                            Follow Me
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Phone Card -->
+                <div class="p-6 rounded-lg shadow-sm section hover:shadow-md transition-shadow" style="background-color: #f9f5f0;">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4" style="color: #8ba888;">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Phone</h3>
+                        <p class="text-sm text-gray-500">(909) 757-0915</p>
+                        <a href="tel:+19097570915" class="inline-block px-4 py-2 text-white rounded-lg transition" style="background-color: #8ba888;" onmouseover="this.style.backgroundColor='#7a9f7a'" onmouseout="this.style.backgroundColor='#8ba888'">
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Email Card -->
+                <div class="p-6 rounded-lg shadow-sm section hover:shadow-md transition-shadow" style="background-color: #f9f5f0;">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4" style="color: #8ba888;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">Email</h3>
+                        <p class="text-sm text-gray-500">contact@jaytherapy.com</p>
+                        <a href="mailto:contact@jaytherapy.com" class="inline-block px-4 py-2 text-white rounded-lg transition" style="background-color: #8ba888;" onmouseover="this.style.backgroundColor='#7a9f7a'" onmouseout="this.style.backgroundColor='#8ba888'">
+                            Email Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <a href="#contact" class="floating-contact w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl shadow-lg transition" style="background-color: #8ba888;" onmouseover="this.style.backgroundColor='#7a9f7a'" onmouseout="this.style.backgroundColor='#8ba888'">
+            <i class="fas fa-comment-alt"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6" style="background-color: #f9f5f0;">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-2" style="font-family: 'Playfair Display', serif;">Jay Hidalgoteran</h3>
+                    <p class="text-gray-600">Marriage & Family Therapist Associate, AMFT</p>
+                </div>
+                
+                <div class="mb-6 md:mb-0">
+                    <h4 class="font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-600 transition" style="color: #8ba888;" onmouseover="this.style.color='#7a9f7a'" onmouseout="this.style.color='#8ba888'">About</a></li>
+                        <li><a href="#expertise" class="text-gray-600 transition" style="color: #8ba888;" onmouseover="this.style.color='#7a9f7a'" onmouseout="this.style.color='#8ba888'">Expertise</a></li>
+                        <li><a href="#approach" class="text-gray-600 transition" style="color: #8ba888;" onmouseover="this.style.color='#7a9f7a'" onmouseout="this.style.color='#8ba888'">Treatment Approach</a></li>
+                        <li><a href="#contact" class="text-gray-600 transition" style="color: #8ba888;" onmouseover="this.style.color='#7a9f7a'" onmouseout="this.style.color='#8ba888'">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Contact Info</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2" style="color: #8ba888;"></i>
+                            <span>(909) 757-0915</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2" style="color: #8ba888;"></i>
+                            <span>contact@jaytherapy.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2" style="color: #8ba888;"></i>
+                            <span>Riverside, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Jay Hidalgoteran, AMFT. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Add staggered animation for child elements
+                    const children = entry.target.querySelectorAll('.specialty-card, .social-card, .testimonial-card');
+                    children.forEach((child, index) => {
+                        setTimeout(() => {
+                            child.style.transform = 'translateY(0)';
+                            child.style.opacity = '1';
+                        }, index * 100);
+                    });
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Enhanced mobile menu toggle with animations
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Smooth scrolling with offset for fixed navbar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                nav.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
